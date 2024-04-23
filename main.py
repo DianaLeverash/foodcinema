@@ -29,7 +29,6 @@ def creation_of_spisok(dish_hits):
 
 @app.route('/')
 def main():
-    #return render_template('mainpage.html', data=data)
     return render_template('mainpage.html', data=creation_of_spisok(dishes))
 
 spisok_of_eating_dishes = []

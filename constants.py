@@ -4,7 +4,7 @@ API_KEY_KINO = "7PAYP6D-P88MNTE-QNGVB45-Z3E2NWE"
 GET_MOVE_INFO = "/v1.4/movie"
 
 BASE_URL_FOOD = "https://api.spoonacular.com"
-API_KEY_FOOD = "888dbd798e1d49dd9a099b56e16e5e87"
+API_KEY_FOOD = "ec769387420e43a3818af9feef89ef6f"
 
 GET_FOOD_INFO = "/recipes/complexSearch"
 

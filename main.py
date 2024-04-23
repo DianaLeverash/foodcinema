@@ -55,8 +55,12 @@ def main2():
                     file.write(name_of_dish + "\n")
                 with open("history.txt", "r") as f:
                     mas_of_history = list(map(lambda x: x.rstrip(), f.readlines()))
-        #if request.form["btn"] == "send":
-            #return redirect("/film")
+        if request.form["btn"] == "clear":
+            f2 = open('history.txt', 'w')
+            f2.close()
+            mas_of_history = []
+            return render_template('food_choice_page.html', dishes=spisok_of_eating_dishes,
+                                   mas_of_history=mas_of_history)
         return redirect("/create")
     if request.method == "GET":
         return render_template('food_choice_page.html', dishes=spisok_of_eating_dishes, mas_of_history=mas_of_history)

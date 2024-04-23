@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect
 from api_server import *
 
+
 app = Flask(__name__)
 
 data = [["борщец", "https://spoonacular.com/recipeImages/635684-312x231.jpg",
@@ -10,6 +11,7 @@ data = [["борщец", "https://spoonacular.com/recipeImages/635684-312x231.jp
          "1+1", "https://image.openmoviedb.com/tmdb-images/w500/bGksau9GGu0uJ8DJQ8DYc9JW5LM.jpg"]
         ]
 dishes = ["borsch", "fried potatoes", "dumplings", "cutlets", "Cannellini Bean and Asparagus Salad with Mushrooms"]
+
 
 def creation_of_spisok(dish_hits):
     hits = []
@@ -27,15 +29,19 @@ def creation_of_spisok(dish_hits):
         hits.append([name_of_dish, image_of_dish, name_of_film, image_of_film])
     return hits
 
+
 @app.route('/')
 def main():
     return render_template('mainpage.html', data=creation_of_spisok(dishes))
+
 
 spisok_of_eating_dishes = []
 calories = 0
 mas_of_history = []
 with open("history.txt", "r") as f:
     mas_of_history = list(map(lambda x: x.rstrip(), f.readlines()))
+
+
 @app.route('/create', methods=["POST", "GET"])
 def main2():
     global calories, mas_of_history
@@ -64,11 +70,14 @@ def main2():
     if request.method == "GET":
         return render_template('food_choice_page.html', dishes=spisok_of_eating_dishes, mas_of_history=mas_of_history)
 
+
 name_of_film = ""
 image_of_film = ""
 film_description = ""
 year_of_release = ""
 genres = ""
+
+
 @app.route('/film', methods=["POST", "GET"])
 def main3():
     global name_of_film, image_of_film, film_description, year_of_release, genres
@@ -92,6 +101,7 @@ def main3():
         return render_template('page_of_recommendation.html', data=spisok_of_eating_dishes,
                                film_text=name_of_film, film_image=image_of_film, film_description=film_description,
                                year_of_release=year_of_release, genres=genres)
+
 
 if __name__ == '__main__':
     app.run()

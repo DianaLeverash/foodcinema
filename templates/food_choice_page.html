@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="display: flex">
+  <div style="width: 200px; height: 500px; overflow-y: scroll">
+    <h2>
+      Список блюд:
+    </h2>
+    {% for i in range(dishes|length) %}
+    <h3>
+      {{dishes[i][0]}}
+    </h3>
+    {% endfor %}
+  </div>
+  <div style="position: absolute; left: 50%; transform: translate(-50%);">
+    <h2>
+      Введите название блюда:
+    </h2>
+    <form method="post">
+      <input type="text" name="dish"/>
+        <button style="margin-top: 50px;" type="submit" name="btn" value="add">Добавить блюдо</button>
+    </form>
+    <div style="display: flex; align-items: center; margin-top: 50px">
+            <a>
+              <img  src="static/img/food.jpg" style="width: 300px; height: 200px"/>
+            </a>
+           </div>
+  </div>
+    <div style="width: 200px; height: 500px; overflow-y: scroll; position: absolute; right: 10%; ">
+    <h2>
+      История поиска:
+    </h2>
+    {% for i in range(mas_of_history|length) %}
+    <h3>
+      {{mas_of_history[i]}}
+    </h3>
+    {% endfor %}
+  </div>
+</div>
+
+    <form action="/film" method="post" style="position: absolute; left: 50%; transform: translate(-50%);">
+        <button type="submit" name="btn" value="send">Начать</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="scroll_horizontal" style="display: grid; grid-auto-flow: column; overflow-x: scroll; height: 400px">
+{% for i in range(data|length) %}
+       <div style=" display: flex; margin-right: 10px; flex-direction: row">
+
+           <div style="margin-top: 50px">
+            <a>
+              <img  src={{data[i][1]}} style="width: 300px; height: 200px"/>
+            </a>
+           <h2 style="text-align: center">{{data[i][0]}}</h2>
+           </div>
+           {% if i < data|length - 1 %}
+           <div style="display: flex; align-items: center; margin-bottom: 65px; margin-left: 0px; margin-right: 0px">
+            <a>
+              <img  src="static/img/плюсик.png" style="width: 100px; height: 100px"/>
+            </a>
+           </div>
+           {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+<div style="display: grid; grid-auto-flow: column; height: 365px">
+    <div style="display: grid; grid-auto-flow: row; height: 365px; width: 250px">
+    <div style="width: 250px; height: 320px">
+    <a>
+     <img  src={{film_image}} style="width: 250px; height: 300px"/>
+     </a>
+     <h2 style="text-align: center">{{film_text}}</h2>
+    </div>
+    </div>
+    <div style="display: grid; grid-auto-flow: row; height: 365px; width: 600px">
+    <h3 style="text-align: left">Информация о фильме:</h3>
+    <h4 style="text-align: left">Жанры: {{genres}}</h4>
+    <h4 style="text-align: left">Год выпуска: {{year_of_release}}</h4>
+    <h4 style="text-align: left">Описание:  {{film_description}}</h4>
+
+    </div>
+</div>
+
+
+</body>
+</html>
